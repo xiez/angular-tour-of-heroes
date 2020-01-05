@@ -1,35 +1,47 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
 import { AppComponent } from './app.component';
+import { MessagesComponent } from './messages/messages.component';
 
 describe('AppComponent', () => {
+  let comp: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  const routes: Routes = []
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MessagesComponent,
       ],
-    }).compileComponents();
+      imports: [
+        FormsModule,
+        RouterModule.forRoot(routes),
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' }
+      ]
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(AppComponent);
+      comp = fixture.debugElement.componentInstance;
+    })
   }));
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(comp).toBeTruthy();
   });
 
-  it(`should have as title 'angular-tour-of-heroes'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-tour-of-heroes');
+  it(`should have as title 'Tour of Heros'`, () => {
+    expect(comp.title).toEqual('Tour of Heros');
   });
 
   it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-tour-of-heroes!');
+    const el = fixture.debugElement.nativeElement;
+    expect(el.querySelector('h1').textContent).toContain('Tour of Heros');
   });
 });

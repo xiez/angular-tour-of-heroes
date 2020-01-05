@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -27,6 +28,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
       FormsModule,
       HttpClientModule,
       AppRoutingModule,
+      RouterModule,
       HttpClientInMemoryWebApiModule.forRoot(
           InMemoryDataService, { dataEncapsulation: false}
       )
