@@ -1,7 +1,6 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { RouterModule, Routes } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import {RouterTestingModule} from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -9,8 +8,6 @@ import { MessagesComponent } from './messages/messages.component';
 describe('AppComponent', () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-
-  const routes: Routes = []
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,11 +17,8 @@ describe('AppComponent', () => {
       ],
       imports: [
         FormsModule,
-        RouterModule.forRoot(routes),
+        RouterTestingModule,
       ],
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' }
-      ]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);
       comp = fixture.debugElement.componentInstance;

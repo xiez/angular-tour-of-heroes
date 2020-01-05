@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { HeroDetailComponent } from './hero-detail.component';
@@ -16,11 +15,9 @@ describe('HeroDetailComponent', () => {
       imports: [
         FormsModule,
         HttpClientTestingModule,
-        RouterModule.forRoot([]),
+        RouterTestingModule,
       ],
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' }
-      ]
+
     })
     .compileComponents();
   }));

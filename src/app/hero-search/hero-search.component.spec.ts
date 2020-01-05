@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { HeroSearchComponent } from './hero-search.component';
@@ -13,12 +12,9 @@ describe('HeroSearchComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HeroSearchComponent ],
       imports:[
-        RouterModule.forRoot([]),
+        RouterTestingModule,
         HttpClientTestingModule,
       ],
-      providers: [
-        { provide: APP_BASE_HREF, useValue: '/' }
-      ]
     })
     .compileComponents();
   }));
