@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 
 describe('AppComponent', () => {
-  let comp: AppComponent;
+  let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,22 +21,22 @@ describe('AppComponent', () => {
         RouterTestingModule,
       ],
     }).compileComponents().then(() => {
-      fixture = TestBed.createComponent(AppComponent);
-      comp = fixture.debugElement.componentInstance;
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance; // The component instantiation
+        element = fixture.nativeElement; // The HTML reference
     })
   }));
 
   it('should create the app', () => {
-    expect(comp).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'Tour of Heros'`, () => {
-    expect(comp.title).toEqual('Tour of Heros');
+    expect(component.title).toEqual('Tour of Heros');
   });
 
   it('should render title in a h1 tag', () => {
     fixture.detectChanges();
-    const el = fixture.debugElement.nativeElement;
-    expect(el.querySelector('h1').textContent).toContain('Tour of Heros');
+    expect(element.querySelector('h1').textContent).toContain('Tour of Heros');
   });
 });

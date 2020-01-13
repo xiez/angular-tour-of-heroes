@@ -18,9 +18,9 @@ describe('HeroService', () => {
     });
 
 
-  it('should be created', () => {
-    expect(heroService).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(heroService).toBeTruthy();
+    });
 
 
     it('getHeroes() should return a collection of heroes', () => {
